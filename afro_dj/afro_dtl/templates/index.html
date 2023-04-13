@@ -1,0 +1,48 @@
+{% load static %}
+<DOCTYPE html>
+  
+        <head>
+            <meta charset="UTF-8">
+            <title>
+                {{ pr_title }}
+            </title>
+            <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
+            <script src=""></script>
+        </head>
+        <body>
+            
+            <header>
+                <ul>
+                    <li id='logo' >{{ pr_title }}</li>
+                   
+                    {% if user.is_authenticated %}
+                        <li class="navlink">{{ user.name }}</li>
+                    {% else %}
+                    <li class="navlink">login</li>
+                    <li class="navlink"> <a href= "{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                    
+                    <li class="navlink"> About</li>
+                    <li class="navlink">Home</li>
+                </ul>
+            </header>
+            
+            <h1>{{ username }} welcome to {{ pr_title }}</h1>
+           {% if  gender == 'Female' %}
+               <p>Greetings Lady</p>
+           {% else %}
+                <p>Your gender was not captured</p>
+           {% endif %}
+
+           {% if  username == 'Mariam' %}
+               <p>Hi Mariam</p>
+            {% elif usename == 'Sophia'%}
+               <p>Hi Sophia</p>
+           {% else %}
+                <p>I dont know you</p>
+           {% endif %}
+            <footer>
+
+            </footer>
+        </body>
+    </html>
