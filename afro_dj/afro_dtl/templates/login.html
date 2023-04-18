@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h1>My Custom Login Page</h1>
+            <!-- form action is where the form posts its data -->
+           <!-- all data captured in the field can be accessing in the views  using name field-->
+                <form action="{% url 'login_user' %}" id="login_form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="regdiv">
+                        
+                    <input type ="text" placeholder="Username" name="username" required >
+                   
+                    <input type = "password" placeholder="Password" name="password" required>
+                    
+                    <input type = "submit" class="button1" title="Login" id="signupbtn">  <!--id overrides the class-->
+                   </div>
+                  
+                </form>
+           <br><br>
+       
+   {% endblock %}

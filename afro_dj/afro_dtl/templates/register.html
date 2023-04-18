@@ -1,55 +1,29 @@
+{% extends 'base.html' %}
+{% block content%}
 {% load static %}
-<DOCTYPE html>
-  
-        <head>
-            <meta charset="UTF-8">
-            <title>
-                {{ pr_title }}
-            </title>
-            <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
-            <script src=""></script>
-        </head>
-        <body>
-            
-            <header>
-                <ul>
-                    <li id='logo' >{{ pr_title }}</li>
-                   
-                    {% if user.is_authenticated %}
-                        <li class="navlink">{{ user.name }}</li>
-                    {% else %}
-                    <li class="navlink">login</li>
-                    <li class="navlink"> Register</li>
-                    {% endif %}
-                    
-                    <li class="navlink"> About</li>
-                    <li class="navlink">Home</li>
-                </ul>
-            </header>
-            
-           <!-- all data captured in the field can be accessing in the views  using name field-->
-                <form action="{% url 'registration' %}" id="reg_form" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="regdiv">
-                        <select name="gender" required> 
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    <input type ="text" placeholder="Username"
-                    name = "username" required >
-                    <input type="email" placeholder="Email"
-                    name = "email" required>
-                    <input type = "password" placeholder="Password"
-                    name = "password" required>
-                    <input type = "password" placeholder="Confirm Password"
-                    required = "password" >
-                    <input type = "submit" class="button1" title="Signup" id="signupbtn">  <!--id overrides the class-->
-                   </div>
-                  
-                </form>
-           
-            <footer>
+    <h1>My Custom Register Page</h1>
 
-            </footer>
-        </body>
-    </html>
+    <!-- all data captured in the field can be accessing in the views  using name field-->
+        <form action="{% url 'registration' %}" id="reg_form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <!-- csrf is a way to tell django that the posted data is within the same application.
+    it is also a security feature against SQL injection -->
+            <div class="regdiv">
+                <select name="gender" required> 
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            <input type ="text" placeholder="Username"
+            name = "username" required >
+            <input type="email" placeholder="Email"
+            name = "user_email" required>
+            <input type = "password" placeholder="Password"
+            name = "password" required>
+            <input type = "password" placeholder="Confirm Password"
+            required = "password" >
+            <input type = "submit" class="button1" title="Signup" id="signupbtn">  <!--id overrides the class-->
+            </div>
+            
+        </form>
+           
+{% endblock %}
